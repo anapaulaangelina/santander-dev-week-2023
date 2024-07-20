@@ -1,5 +1,6 @@
 package me.dio.service.impl;
 
+import java.util.List;
 import me.dio.domain.model.User;
 import me.dio.domain.repository.UserRepository;
 import me.dio.service.UserService;
@@ -27,5 +28,14 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("This Account number already exists.");
         }
         return userRepository.save(userToCreate);
+    }
+    
+    public void deletar(Long id) {
+        findById(id);
+        userRepository.deleteById(id);
+    }
+    
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }
