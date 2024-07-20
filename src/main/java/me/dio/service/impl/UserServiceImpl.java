@@ -30,11 +30,19 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(userToCreate);
     }
     
+    @Override
+    public User update(User userToUpdate) {
+        findById(userToUpdate.getId());
+        return userRepository.save(userToUpdate);
+    }
+    
+    @Override
     public void deletar(Long id) {
         findById(id);
         userRepository.deleteById(id);
     }
     
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
