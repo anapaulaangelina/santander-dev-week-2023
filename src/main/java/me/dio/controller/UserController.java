@@ -21,13 +21,13 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
-       var user = userService.findById(id);
+       User user = userService.findById(id);
        return ResponseEntity.ok(user);
     }
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody User userToCreate) {
-        var userCreated = userService.create(userToCreate);
+        User userCreated = userService.create(userToCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(userCreated.getId())
